@@ -1,9 +1,10 @@
+import Chat from "./pages/Chat";
 function App() {
   return (
-    <>
-    <h1>DinDin</h1>
-    </>
-  )
+    <div>
+      <Chat />
+    </div>
+  );
 }
 
-export default App
+export default App;
