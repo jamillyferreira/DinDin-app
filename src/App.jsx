@@ -1,9 +1,24 @@
-import Chat from "./pages/Chat";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./routes";
+import { TransactionProvider } from "./context/TransactionContext";
+import { useEffect, useState } from "react";
+import SplashScreen from "./components/summary/SplashScreen";
+
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Simula um delay de 2 segundo
+    return () => clearTimeout(timer);
+  }, []);
   return (
-    <div>
-      <Chat />
-    </div>
+    <TransactionProvider>
+      <BrowserRouter>
+        {isLoading ? <SplashScreen /> : <AppRoutes />}
+      </BrowserRouter>
+    </TransactionProvider>
   );
 }
 

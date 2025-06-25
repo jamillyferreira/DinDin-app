@@ -12,7 +12,7 @@ export const removeAccents = (str) => {
 // funcao de detectar tipo
 const detectTransactionType = (normalizedText) => {
   for (const keyword of INCOME_KEYWORS) {
-    if (normalizedText.includes(keyword)) {
+    if (normalizedText.includes(keyword.toLowerCase())) {
       return "entrada";
     }
   }
@@ -38,6 +38,7 @@ const detectCategory = (normalizedText) => {
 
 // Funçao para extrair valores
 const extractValue = (text) => {
+  // Padrões para identificar valores monetários no texto
   const patterns = [
     /(\d+)[,.](\d{2})\s*(reais?|r\$|$)/i,
     /r\$\s*(\d+)[,.]?(\d{2})?/i,
@@ -45,6 +46,8 @@ const extractValue = (text) => {
     /(\d+)\s*(reais?|real)/i,
     /(\d+)/,
   ];
+
+  // Testa cada padrão até encontrar um correspondente
   for (const pattern of patterns) {
     const match = text.match(pattern);
     if (match) {
@@ -79,6 +82,7 @@ const extractInstallments = (text) => {
 
 // Funçao para extrair descricao
 const extractDescription = (text) => {
+  // Remove valores monetários, parcelas e verbos comuns
   let description = text
     .replace(/\d+[,.]?\d*\s*(reais?|r\$|$)/gi, "")
     .replace(/r\$\s*\d+[,.]?\d*/gi, "")
@@ -107,7 +111,7 @@ export function interpretMessage(text) {
     originalText: text,
     normalizedText,
     description: extractDescription(text),
-    transactionType: detectTransactionType(text),
+    transactionType: detectTransactionType(normalizedText),
     category: detectCategory(text),
     value: extractValue(text),
     installments: extractInstallments(text),

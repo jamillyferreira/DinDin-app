@@ -21,11 +21,11 @@ const ICON_MAP = {
 };
 
 const Message = ({ message }) => {
-  const isUser = message.type === "user";
+  const isUser = message.from === "user";
   return (
     <div
-      className={`inline-block whitespace-pre-line max-w-[75%] px-4 py-2 rounded-2xl text-sm break-words leading-snug ${
-        isUser ? "bg-blue-900 text-white" : "bg-[#EAEAEA] text-gray-900"
+      className={`inline-block whitespace-pre-line max-w-[85%] px-4 py-2 rounded-2xl text-sm break-words leading-snug ${
+        isUser ? "bg-primary text-white" : "bg-[#EAEAEA] text-darkGray"
       }`}
     >
       <div>

@@ -26,7 +26,7 @@ const InputBar = ({ onSendMessage }) => {
         onKeyDown={handleKeyDown}
       />
       <button onClick={handleSend}>
-        <IoSend className="text-blue-900" size={25} />
+        <IoSend className="text-primary" size={30} />
       </button>
     </div>
   );
