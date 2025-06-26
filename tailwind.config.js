@@ -7,6 +7,7 @@ export default {
       colors: {
         // Light Mode Colors
         primary: "#006D5B",
+        greenLight: "#2FA98C",
         background: "#F4F4F4",
         white: "#FFFFFF",
         darkGray: "#333333",
