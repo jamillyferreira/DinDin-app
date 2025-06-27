@@ -1,12 +1,4 @@
-function Input({
-  label,
-  icon: Icon,
-  placeholder,
-  type = "text",
-  name,
-  value,
-  onChange,
-}) {
+function Input({ label, icon: Icon, placeholder, name, error }) {
   return (
     <div className="flex flex-col gap-1 w-full">
       {label && (
@@ -21,15 +13,15 @@ function Input({
           </span>
         )}
         <input
-          id={name}
-          name={name}
-          type={type}
           placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className={`pl-10 pr-5 w-full border border-lightGray rounded-xl py-2 text-sm text-lightGray outline-none focus:border-greenLight hover:border-greenLight transition-colors duration-100 cursor-pointer`}
+          className={`pl-10 pr-5 w-full border rounded-xl py-2 text-sm text-lightGray outline-none transition-colors duration-100 cursor-pointer ${
+            error
+              ? "border border-danger"
+              : "border border-lightGray focus:border-greenLight hover:border-greenLight"
+          }`}
         />
       </div>
+      {error && <span className="text-danger text-xs mt-1">{error}</span>}
     </div>
   );
 }

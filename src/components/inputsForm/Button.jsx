@@ -3,7 +3,7 @@ function Button({ text, type }) {
     <div className="mt-3">
       <button
         type={type}
-        className="w-full border-none bg-primary text-white font-medium py-2 rounded-full hover:bg-greenLight transition-colors duration-200 cursor-pointer"
+        className="w-full border-none bg-primary text-white text-sm font-medium py-2 rounded-full hover:bg-greenLight transition-colors duration-200 cursor-pointer"
       >
         {text}
       </button>
