@@ -10,12 +10,15 @@ function AuthFooter({ GoogleText, footerText, actionText }) {
         <hr className="flex-grow border-lightGray"></hr>
       </div>
       {/* Botão do Google */}
-      <button className="w-full flex justify-center gap-3 border border-lightGray py-2 rounded-full hover:bg-greenLight hover:bg-opacity-5 hover:border-greenLight text-darkGray font-medium text-sm cursor-pointer">
+      <button
+        type="button"
+        className="w-full flex justify-center gap-3 border border-lightGray py-2 rounded-full hover:bg-greenLight hover:bg-opacity-5 hover:border-greenLight text-darkGray font-medium text-sm cursor-pointer"
+      >
         <FcGoogle size={20} />
         {GoogleText}
       </button>
       {/* Link dinâmico */}
-      <p className="text-lightGray font-medium">
+      <p className="text-lightGray font-medium text-sm">
         {footerText}
         <button className="text-primary font-bold ml-1">{actionText}</button>
       </p>
