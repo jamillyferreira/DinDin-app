@@ -27,7 +27,7 @@ function Input({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className={`pl-10 pr-5 w-full border border-lightGray rounded-lg py-2 text-sm text-lightGray outline-none`}
+          className={`pl-10 pr-5 w-full border border-lightGray rounded-xl py-2 text-sm text-lightGray outline-none focus:border-greenLight hover:border-greenLight transition-colors duration-100 cursor-pointer`}
         />
       </div>
     </div>
