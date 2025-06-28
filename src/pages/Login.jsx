@@ -3,6 +3,7 @@ import Button from "../components/inputsForm/Button";
 import Input from "../components/inputsForm/Input";
 import AuthFooter from "../components/inputsForm/AuthFooter";
 import { PiEnvelope, PiLockKey } from "react-icons/pi";
+import Header from "../components/inputsForm/Header";
 
 function Login() {
   const {
@@ -25,9 +26,7 @@ function Login() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center px-4">
-      <h2 className="text-center text-primary font-bold text-3xl mb-10">
-        Fazer login
-      </h2>
+      <Header text="Fazer login" />
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Input
           label="E-mail"

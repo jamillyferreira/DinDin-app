@@ -38,9 +38,7 @@ function Signup() {
 
   return (
     <div className="min-h-screen py-3 px-4 flex flex-col justify-center">
-      <h2 className="text-center text-primary font-bold text-3xl mb-10">
-        Criar conta
-      </h2>
+      <Header text="Criar conta" />
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Input
           label="Nome"

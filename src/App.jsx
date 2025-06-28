@@ -3,6 +3,7 @@ import { AppRoutes } from "./routes";
 import { TransactionProvider } from "./context/TransactionContext";
 import { useEffect, useState } from "react";
 import SplashScreen from "./components/summary/SplashScreen";
+import Login from "./pages/Login";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
