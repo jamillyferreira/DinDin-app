@@ -3,7 +3,6 @@ import { AppRoutes } from "./routes";
 import { TransactionProvider } from "./context/TransactionContext";
 import { useEffect, useState } from "react";
 import SplashScreen from "./components/summary/SplashScreen";
-import Signup from "./pages/Signup";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,8 +17,7 @@ function App() {
   return (
     <TransactionProvider>
       <BrowserRouter>
-        {/* {isLoading ? <SplashScreen /> : <AppRoutes />} */}
-        <Signup />
+        {isLoading ? <SplashScreen /> : <AppRoutes />}
       </BrowserRouter>
     </TransactionProvider>
   );

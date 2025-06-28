@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
-
-function AuthFooter({ GoogleText, footerText, actionText }) {
+import { Link } from "react-router-dom";
+function AuthFooter({ GoogleText, footerText, actionText, route }) {
   return (
     <div className="flex flex-col items-center gap-5">
       {/* Linha "OU" */}
@@ -12,7 +12,7 @@ function AuthFooter({ GoogleText, footerText, actionText }) {
       {/* Botão do Google */}
       <button
         type="button"
-        className="w-full flex justify-center gap-3 border border-lightGray py-2 rounded-full hover:bg-greenLight hover:bg-opacity-5 hover:border-greenLight text-darkGray font-medium text-sm cursor-pointer"
+        className="w-full flex justify-center gap-3 border border-gray-400 py-2 rounded-full hover:bg-greenLight hover:bg-opacity-5 hover:border-greenLight text-lightGray font-medium text-sm cursor-pointer"
       >
         <FcGoogle size={20} />
         {GoogleText}
@@ -20,7 +20,9 @@ function AuthFooter({ GoogleText, footerText, actionText }) {
       {/* Link dinâmico */}
       <p className="text-lightGray font-medium text-sm">
         {footerText}
-        <button className="text-primary font-bold ml-1">{actionText}</button>
+        <Link to={route} className="text-primary font-bold ml-1">
+          {actionText}
+        </Link>
       </p>
     </div>
   );
