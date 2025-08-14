@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import Button from "../components/inputsForm/Button";
-import Input from "../components/inputsForm/Input";
-import AuthFooter from "../components/inputsForm/AuthFooter";
+import { Button } from "../components/form/Button";
+import { Input } from "../components/form/Input";
+import { AuthFooter } from "../components/form/AuthFooter";
 import { PiEnvelope, PiLockKey } from "react-icons/pi";
-import Header from "../components/inputsForm/Header";
+import { Header } from "../components/form/Header";
 
-function Login() {
+export const Login = () => {
   const {
     register,
     handleSubmit,
@@ -26,7 +26,10 @@ function Login() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center px-4">
-      <Header text="Fazer login" />
+      <Header
+        text="Login"
+        description="Faça login na sua conta para continuar"
+      />
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Input
           label="E-mail"
@@ -57,6 +60,7 @@ function Login() {
           error={errors.password?.message}
         />
         <Button type="submit" text="Entrar" />
+
         <div className="flex flex-col gap-4">
           <AuthFooter
             GoogleText="Entrar com google"
@@ -68,6 +72,4 @@ function Login() {
       </form>
     </div>
   );
-}
-
-export default Login;
+};

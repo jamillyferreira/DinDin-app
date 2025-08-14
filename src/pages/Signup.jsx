@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 // import { useState } from "react";
-import AuthFooter from "../components/inputsForm/AuthFooter";
-import Button from "../components/inputsForm/Button";
-import Input from "../components/inputsForm/Input";
-import Loading from "../components/inputsForm/Loading";
+import { AuthFooter } from "../components/form/AuthFooter";
+import { Button } from "../components/form/Button";
+import { Input } from "../components/form/Input";
+import { Header } from "../components/form/Header";
 import { PiLockKey, PiUser, PiEnvelope } from "react-icons/pi";
 
-function Signup() {
+export const Signup = () => {
   // const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -28,17 +28,15 @@ function Signup() {
     const newUser = { name, email, password };
     localStorage.setItem("user", JSON.stringify(newUser));
     console.log("Usuário salvo com sucesso!");
-
-    // setIsLoading(true);
-
-    // setTimeout(() => {
-    //   setIsLoading(false); // Volta ao normal
-    // }, 2000);
   };
 
   return (
     <div className="min-h-screen py-3 px-4 flex flex-col justify-center">
-      <Header text="Criar conta" />
+      <Header
+        text="Criar conta"
+        description="Aqui você registra seus gastos de forma simples e rapido"
+      />
+
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Input
           label="Nome"
@@ -101,23 +99,10 @@ function Signup() {
           })}
           error={errors.passwordConfirmation?.message}
         />
-        <Button
-          type="submit"
-          text="Criar conta"
-          // disabled={isLoading}
-          // text={
-          //   isLoading ? (
-          //     <div className="flex items-center justify-center">
-          //       <Loading />
-          //     </div>
-          //   ) : (
-          //     "Criar conta"
-          //   )
-          // }
-        />
+        <Button type="submit" text="Criar conta" />
         <div className="flex flex-col gap-4">
           <AuthFooter
-            GoogleText="Criar conta com google"
+            GoogleText="Entrar com Google"
             footerText="Já tem conta?"
             actionText="Fazer login"
             route="/login"
@@ -126,6 +111,4 @@ function Signup() {
       </form>
     </div>
   );
-}
-
-export default Signup;
+};

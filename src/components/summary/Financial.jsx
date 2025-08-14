@@ -1,6 +1,7 @@
+import React from "react";
 import { IoArrowUpCircle, IoArrowDownCircle } from "react-icons/io5";
 
-export const Financial = ({ saldo, totalReceived, totalGastos }) => {
+export const Financial = React.memo(({ saldo, totalReceived, totalGastos }) => {
   const savingsPercent = totalReceived
     ? (((totalReceived - totalGastos) / totalReceived) * 100).toFixed(1)
     : 0;
@@ -9,8 +10,8 @@ export const Financial = ({ saldo, totalReceived, totalGastos }) => {
     <div>
       <div className="p-3 bg-primary text-white rounded-b-3xl">
         <div className="text-center py-3">
-          <h1 className="font-normal mb-2 mt-6">Saldo</h1>
-          <span className="font-bold text-xl font-mono">
+          <h2 className="font-normal">Saldo total</h2>
+          <span className="font-bold text-2xl font-mono">
             R${saldo.toFixed(2).replace(".", ",")}
           </span>
           <div className="flex justify-center gap-2 items-center mt-4">
@@ -46,4 +47,4 @@ export const Financial = ({ saldo, totalReceived, totalGastos }) => {
       </div>
     </div>
   );
-};
+});

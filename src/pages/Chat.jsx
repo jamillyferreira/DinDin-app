@@ -90,7 +90,7 @@ export const Chat = () => {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* cabeçalho */}
-      <div className="flex items-center gap-3 bg-primary px-6 py-4">
+      <div className="flex items-center gap-3 bg-primary px-3 py-4">
         <Link to="/">
           <IoChevronBackOutline size={23} className="text-white" />
         </Link>

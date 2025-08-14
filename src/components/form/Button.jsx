@@ -1,4 +1,4 @@
-function Button({ text, type }) {
+export const Button = ({ text, type }) => {
   return (
     <div className="mt-3">
       <button
@@ -9,5 +9,4 @@ function Button({ text, type }) {
       </button>
     </div>
   );
-}
-export default Button;
+};

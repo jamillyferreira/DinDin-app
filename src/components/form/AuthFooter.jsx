@@ -1,13 +1,14 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-function AuthFooter({ GoogleText, footerText, actionText, route }) {
+
+export const AuthFooter = ({ GoogleText, footerText, actionText, route }) => {
   return (
     <div className="flex flex-col items-center gap-5">
       {/* Linha "OU" */}
       <div className="flex items-center gap-3 w-2/3">
-        <hr className="flex-grow border-lightGray"></hr>
-        <span className="text-lightGray text-sm">OU</span>
-        <hr className="flex-grow border-lightGray"></hr>
+        <hr className="flex-grow border-gray-300"></hr>
+        <span className="text-lightGray text-xs">ou</span>
+        <hr className="flex-grow border-gray-300"></hr>
       </div>
       {/* Botão do Google */}
       <button
@@ -26,6 +27,4 @@ function AuthFooter({ GoogleText, footerText, actionText, route }) {
       </p>
     </div>
   );
-}
-
-export default AuthFooter;
+};

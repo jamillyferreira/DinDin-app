@@ -1,6 +1,7 @@
+import React from "react";
 import { useTransactions } from "../../context/TransactionContext";
 
-export const IncomeSummary = () => {
+export const IncomeSummary = React.memo(() => {
   const { transactions } = useTransactions();
 
   console.log("Todas as transaçoes:", transactions);
@@ -59,7 +60,7 @@ export const IncomeSummary = () => {
       )}
     </div>
   );
-};
+});
 
 function formatCurrency(value) {
   return new Intl.NumberFormat("pt-BR", {

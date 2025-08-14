@@ -13,6 +13,8 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "motion": "^12.19.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.58.1",

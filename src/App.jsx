@@ -2,8 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./routes";
 import { TransactionProvider } from "./context/TransactionContext";
 import { useEffect, useState } from "react";
-import SplashScreen from "./components/summary/SplashScreen";
-import Login from "./pages/Login";
+import SplashScreen from "./components/splash/SplashScreen";
+import { Login } from "./pages/Login";
+import UserModal from "./components/drawer/UserModal";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +20,7 @@ function App() {
     <TransactionProvider>
       <BrowserRouter>
         {isLoading ? <SplashScreen /> : <AppRoutes />}
+        {/* <UserModal /> */}
       </BrowserRouter>
     </TransactionProvider>
   );

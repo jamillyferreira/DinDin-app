@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PiEyeLight, PiEyeSlash } from "react-icons/pi";
 
-const Input = React.forwardRef(
+export const Input = React.forwardRef(
   ({ label, icon: Icon, type, error, ...rest }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -56,5 +56,3 @@ const Input = React.forwardRef(
     );
   }
 );
-
-export default Input;
