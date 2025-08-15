@@ -1,5 +1,5 @@
-import { CATEGORIES } from "./constants/categories";
-import { INCOME_KEYWORS } from "./constants/incomeKeywords";
+import { EXPENSE_CATEGORIES } from "./constants/expenseCategories";
+import { INCOME_CATEGORIES } from "./constants/incomeCategories";
 
 // funcao remove acentos
 export const removeAccents = (str) => {
@@ -9,31 +9,32 @@ export const removeAccents = (str) => {
     .toLowerCase();
 };
 
-// funcao de detectar tipo
+// Detecta o tipo de transação: Entrada ou Gasto
 const detectTransactionType = (normalizedText) => {
-  for (const keyword of INCOME_KEYWORS) {
-    if (normalizedText.includes(keyword.toLowerCase())) {
-      return "entrada";
-    }
+  for (const { match } of Object.values(INCOME_CATEGORIES)) {
+    if (match.test(normalizedText)) return "income"; // Detecta se é uma entrada
   }
-  return "gasto";
+  return "expense"; // Se não for uma entrada, é um gasto
 };
 
-// Funçao para extrair categoria
-const detectCategory = (normalizedText) => {
-  for (const [categoryKey, categoryData] of Object.entries(CATEGORIES)) {
-    if (categoryKey === "outros") continue;
-    if (categoryData.match.test(normalizedText)) {
-      return {
-        key: categoryKey,
-        label: categoryData.label,
-      };
+const detectExpenseCategory = (normalizedText) => {
+  for (const [key, data] of Object.entries(EXPENSE_CATEGORIES)) {
+    if (key === "outros") continue;
+    if (data.match.test(normalizedText)) {
+      return { key, label: data.label };
     }
   }
-  return {
-    key: "outros",
-    label: CATEGORIES.outros.label,
-  };
+  return { key: "outros", label: EXPENSE_CATEGORIES.outros.label };
+};
+
+const detectIncomeCategory = (normalizedText) => {
+  for (const [key, data] of Object.entries(INCOME_CATEGORIES)) {
+    if (key === "outros") continue;
+    if (data.match.test(normalizedText)) {
+      return { key, label: data.label };
+    }
+  }
+  return { key: "outros", label: INCOME_CATEGORIES.outros.label };
 };
 
 // Funçao para extrair valores
@@ -105,14 +106,22 @@ export function interpretMessage(text) {
   if (!text || typeof text !== "string") {
     throw new Error("Mensagem inválida");
   }
+
   const normalizedText = removeAccents(text);
+
+  const transactionType = detectTransactionType(normalizedText);
+
+  const category =
+    transactionType === "income"
+      ? detectIncomeCategory(normalizedText)
+      : detectExpenseCategory(normalizedText);
 
   return {
     originalText: text,
     normalizedText,
     description: extractDescription(text),
-    transactionType: detectTransactionType(normalizedText),
-    category: detectCategory(text),
+    transactionType,
+    category,
     value: extractValue(text),
     installments: extractInstallments(text),
     date: new Date().toLocaleDateString("pt-BR"),

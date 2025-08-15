@@ -7,28 +7,31 @@ export const IncomeSummary = React.memo(() => {
   console.log("Todas as transaçoes:", transactions);
 
   const incomeData = transactions.reduce((acc, transaction) => {
-    const { description, value, transactionType } =
+    const { category, value, transactionType } =
       transaction.interpretedData || {
-        description: transaction.description,
-        value: transaction.value,
         transactionType: transaction.transactionType,
+        category: transaction.category,
+        value: transaction.value,
       };
     console.log("Tipo de transacao:", {
-      description,
-      value,
       transactionType,
+      category,
+      value,
     });
 
-    if (transactionType === "entrada") {
-      console.log("É uma entrada:", description, value);
-      const descKey = description.toLowerCase().trim();
-      if (!acc[descKey]) {
-        acc[descKey] = {
-          description: description,
+    if (transactionType === "income") {
+      console.log("É uma entrada:", category, value);
+
+      const label = category?.label || "Outros";
+      const key = label.toLowerCase().trim();
+
+      if (!acc[key]) {
+        acc[key] = {
+          label,
           amount: 0,
         };
       }
-      acc[descKey].amount += Number(value);
+      acc[key].amount += Number(value);
     }
     return acc;
   }, {});
@@ -45,10 +48,10 @@ export const IncomeSummary = React.memo(() => {
         <div className="space-y-3">
           {sortedIncome.map((item, index) => (
             <div
-              key={`${item.description}-${index}`}
+              key={`${item.label}-${index}`}
               className="flex justify-between items-center border-b border-gray-300 text-darkGray"
             >
-              <span className="text-sm font-medium">{item.description}</span>
+              <span className="text-sm font-medium">{item.label}</span>
               <span className="text-sm font-medium text-primary">
                 {formatCurrency(item.amount)}
               </span>

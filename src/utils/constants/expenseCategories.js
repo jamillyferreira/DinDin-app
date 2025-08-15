@@ -3,14 +3,13 @@ import {
   FaHouse,
   FaShirt,
   FaUtensils,
-  FaMoneyBill,
   FaHeartPulse,
   FaTv,
   FaGamepad,
   FaQuestion,
 } from "react-icons/fa6";
 
-export const CATEGORIES = {
+export const EXPENSE_CATEGORIES = {
   alimentacao: {
     icon: FaUtensils,
     label: "Alimentação",
@@ -24,12 +23,6 @@ export const CATEGORIES = {
     className: "text-primary",
     match: /moto|carro|gasolina|passagem|uber|moto taxi|taxi|combustivel/i,
   },
-  trabalho: {
-    icon: FaMoneyBill,
-    label: "Trabalho",
-    className: "text-primary",
-    match: /salario|salário|bônus|bonus|extra|renda/i,
-  },
   saude: {
     icon: FaHeartPulse,
     label: "Saúde",
@@ -40,14 +33,14 @@ export const CATEGORIES = {
     icon: FaHouse,
     label: "Casa",
     className: "text-primary",
-    match: /aluguel|luz|agua|internet|wifi|gas|condominio/i,
+    match: /\b(aluguel|luz|agua|internet|wifi|gas|condominio)\b/i,
   },
   vestiario: {
     icon: FaShirt,
     label: "Vestiário",
     className: "text-primary",
     match:
-      /camisa|calça|short|shorts|regata|moletom|jaqueta|calça jeans|tênis|tenis|sandália|sandalia|sapato|calcinha|cueca|box|cueca box|/i,
+      /\b(camisa|calça|short|shorts|regata|moletom|jaqueta|calça jeans|tênis|tenis|sandália|sandalia|sapato|calcinha|cueca|box|cueca box)\b/i,
   },
   streamingEassinaturas: {
     icon: FaTv,

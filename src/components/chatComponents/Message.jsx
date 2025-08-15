@@ -12,8 +12,8 @@ const ICON_MAP = {
   description: <FcDocument size={16} className="inline mr-1" />,
   category: <FcBookmark size={16} className="inline mr-1" />,
   type: {
-    entrada: <FcExternal size={16} className="inline mr-1" />,
-    gasto: <FcInternal size={16} className="inline mr-1" />,
+    income: <FcExternal size={16} className="inline mr-1" />,
+    expense: <FcInternal size={16} className="inline mr-1" />,
   },
   value: <FcMoneyTransfer size={16} className="inline mr-1" />,
   installments: <FaCreditCard size={16} className="inline mr-1" />,
@@ -28,10 +28,7 @@ const Message = ({ message }) => {
         isUser ? "bg-primary text-white" : "bg-[#EAEAEA] text-darkGray"
       }`}
     >
-      <div>
-        <p className="mb-2">{message.text}</p>
-        <span className="font-light text-right">{message.timestamp}</span>
-      </div>
+      <p>{message.text}</p>
       {message.meta && (
         <div className="mt-4 bg-white space-y-1 py-2 px-3 border border-gray-300 rounded-md">
           {/* Descricao */}
@@ -59,7 +56,7 @@ const Message = ({ message }) => {
               Tipo:
             </span>
             <span className="ml-1">
-              {message.meta.transactionType === "entrada" ? "Entrada" : "Gasto"}
+              {message.meta.transactionType === "income" ? "Entrada" : "Gasto"}
             </span>
           </div>
 
@@ -67,7 +64,8 @@ const Message = ({ message }) => {
           <div className="flex items-center">
             <span className="font-medium">
               {ICON_MAP.value}
-              Valor:</span>
+              Valor:
+            </span>
             <span className="ml-1">
               {typeof message.meta.value === "number"
                 ? `R$${message.meta.value.toFixed(2).replace(".", ",")}`
@@ -96,6 +94,7 @@ const Message = ({ message }) => {
           </div>
         </div>
       )}
+      <span className="font-light text-xs">{message.timestamp}</span>
     </div>
   );
 };

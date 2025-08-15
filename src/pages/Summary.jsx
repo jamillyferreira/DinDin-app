@@ -17,11 +17,11 @@ export const Summary = () => {
   };
 
   const totalReceived = transactions
-    .filter((t) => t.transactionType === "entrada")
+    .filter((t) => t.transactionType === "income")
     .reduce((acc, curr) => acc + curr.value, 0);
 
   const totalGastos = transactions
-    .filter((t) => t.transactionType === "gasto")
+    .filter((t) => t.transactionType === "expense")
     .reduce((acc, curr) => acc + curr.value, 0);
 
   const saldo = totalReceived - totalGastos;

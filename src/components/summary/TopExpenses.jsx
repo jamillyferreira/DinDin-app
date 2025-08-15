@@ -1,10 +1,10 @@
 import { useTransactions } from "../../context/TransactionContext";
-import { CATEGORIES } from "../../utils/constants/categories";
+import { EXPENSE_CATEGORIES } from "../../utils/constants/expenseCategories";
 
 export const TopExpenses = () => {
   const { transactions } = useTransactions();
 
-  const expenses = transactions.filter((t) => t.transactionType === "gasto");
+  const expenses = transactions.filter((t) => t.transactionType === "expense");
 
   // Calcula o total gasto por categoria usando reduce
   const categoryTotal = expenses.reduce((acc, curr) => {
@@ -24,18 +24,18 @@ export const TopExpenses = () => {
 
   // Calcula o total de entradas (receitas) para calcular a porcentagem
   const incomeTotal = transactions
-    .filter((t) => t.transactionType === "entrada") // Filtra apenas as transações de entrada
+    .filter((t) => t.transactionType === "income") // Filtra apenas as transações de entrada
     .reduce((sum, t) => sum + Number(t.value), 0); // usa reduce para somar os valores. Se não houver entradas, a porcentagem será 0
 
   const TopExpenses = Object.entries(categoryTotal).map(
     ([category, amount]) => {
-      const categoryData = Object.values(CATEGORIES).find(
+      const categoryData = Object.values(EXPENSE_CATEGORIES).find(
         (cat) => cat.label === category
       );
 
       // Obtém o icone correspondente a categoria
       // Se não encontrar, usa o icone da categoria 'outros' como fallback
-      const Icon = categoryData?.icon || CATEGORIES.outros.icon;
+      const Icon = categoryData?.icon || EXPENSE_CATEGORIES.outros.icon;
 
       // Retorna um objeto formatado com os dados para exibição
       return {

@@ -1,10 +1,10 @@
+import { useTransactions } from "../context/TransactionContext";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { IoChevronBackOutline } from "react-icons/io5";
 import interpretMessage from "../utils/interpretMessage";
 import InputBar from "../components/chatComponents/InputBar";
 import Message from "../components/chatComponents/Message";
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { useTransactions } from "../context/TransactionContext";
 
 export const Chat = () => {
   const { addTransaction } = useTransactions();
